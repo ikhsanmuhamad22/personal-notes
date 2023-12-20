@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#root {
+  width: 80%;
+  margin: auto;
+  padding: 20px 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1 {
+  font-size: x-large;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: larger;
+}
+
+h3 {
+  font-size: large;
+}
+
+p {
+  font-size: medium;
+}
