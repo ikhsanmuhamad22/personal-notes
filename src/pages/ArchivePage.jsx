@@ -1,8 +1,15 @@
+import Search from '../components/Search';
+import Card from '../components/card/Card';
+import { getArchivedNotes } from '../utils/data';
+
 const ArchivePage = () => {
+  const title = 'Search Archive notes';
+  const getNotes = getArchivedNotes();
   return (
-    <>
-      <h1>ini adalah page archive</h1>
-    </>
+    <main className="p-4">
+      <Search title={title} />
+      <Card notes={getNotes} archive={true} />
+    </main>
   );
 };
 
