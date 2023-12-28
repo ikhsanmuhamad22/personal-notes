@@ -1,10 +1,9 @@
 import CardItem from './CardItem';
 
-const Card = ({ notes, archive }) => {
-  console.log(notes);
+const Card = ({ notes, archive, search }) => {
   return (
     <section className="grid grid-cols-4 gap-4 p-2">
-      {archive ? null : (
+      {archive || search ? null : (
         <article className="border border-black p-3 rounded-md shadow-md hover:scale-105 transition-all cursor-pointer flex items-center justify-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
