@@ -7,14 +7,14 @@ const HomePage = () => {
   const [valueSearch, setValueSearch] = useState('');
 
   const title = 'Search notes';
-  const notes = getActiveNotes();
+  const getNotes = getActiveNotes();
 
   const handleParentSearchChange = (value) => {
     setValueSearch(value);
   };
 
   const searchNotes = () => {
-    const result = notes.filter((note) =>
+    const result = getNotes.filter((note) =>
       note.title.toLowerCase().includes(valueSearch.toLowerCase())
     );
     return result;
