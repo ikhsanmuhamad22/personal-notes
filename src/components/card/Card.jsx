@@ -1,4 +1,5 @@
 import CardItem from './CardItem';
+import PropTypes from 'prop-types';
 
 const Card = ({ notes, archive, search }) => {
   return (
@@ -34,6 +35,19 @@ const Card = ({ notes, archive, search }) => {
       )}
     </section>
   );
+};
+
+Card.propTypes = {
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      createdAt: PropTypes.string.isRequired,
+      body: PropTypes.string.isRequired,
+    })
+  ),
+  archive: PropTypes.bool,
+  search: PropTypes.string,
 };
 
 export default Card;
