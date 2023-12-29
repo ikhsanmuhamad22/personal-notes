@@ -25,6 +25,7 @@ const Card = ({ notes, archive, search }) => {
         notes.map((note) => (
           <CardItem
             key={note.id}
+            id={note.id}
             title={note.title}
             date={note.createdAt}
             body={note.body}
