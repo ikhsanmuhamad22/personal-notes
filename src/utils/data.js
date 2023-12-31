@@ -77,6 +77,7 @@ function addNote({ title, body }) {
 
 function deleteNote(id) {
   notes = notes.filter((note) => note.id !== id);
+  return notes;
 }
 
 function archiveNote(id) {
