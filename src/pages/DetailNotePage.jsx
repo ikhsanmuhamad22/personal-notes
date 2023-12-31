@@ -3,7 +3,7 @@ import { archiveNote, deleteNote, getNote, unarchiveNote } from '../utils/data';
 import ArchiveButton from '../components/Button/ArchiveButton';
 import DeleteButton from '../components/Button/DeleteButton';
 
-const DetailNote = () => {
+const DetailNotePage = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const note = getNote(id);
@@ -44,4 +44,4 @@ const DetailNote = () => {
   );
 };
 
-export default DetailNote;
+export default DetailNotePage;
