@@ -1,5 +1,5 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { archiveNote, deleteNote, getNote } from '../utils/data';
+import { archiveNote, deleteNote, getNote, unarchiveNote } from '../utils/data';
 import ArchiveButton from '../components/Button/ArchiveButton';
 import DeleteButton from '../components/Button/DeleteButton';
 
@@ -10,6 +10,11 @@ const DetailNote = () => {
 
   const onArchive = () => {
     archiveNote(id);
+    navigate('/');
+  };
+
+  const onUnarchive = () => {
+    unarchiveNote(id);
     navigate('/');
   };
 
@@ -28,7 +33,7 @@ const DetailNote = () => {
         <p>{note.body}</p>
       </main>
       <div className="flex gap-4 absolute bottom-10 right-10">
-        <div onClick={onArchive}>
+        <div onClick={note.archived ? onUnarchive : onArchive}>
           <ArchiveButton />
         </div>
         <div onClick={onDelete}>
