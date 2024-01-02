@@ -1,9 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from './header';
-import HomePage from '../pages/HomePage';
-import ArchivePage from '../pages/ArchivePage';
-import DetailNotePage from '../pages/DetailNotePage';
-import AddNotePage from '../pages/AddNotePage';
+import Header from './components/Header';
+import HomePage from './pages/HomePage';
+import ArchivePage from './pages/ArchivePage';
+import DetailNotePage from './pages/DetailNotePage';
+import AddNotePage from './pages/AddNotePage';
 
 const App = () => {
   return (
