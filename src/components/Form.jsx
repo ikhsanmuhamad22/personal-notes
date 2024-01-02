@@ -22,6 +22,7 @@ const Form = () => {
         className="h-20 rounded-md text-4xl font-bold p-3"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        maxLength={20}
       />
       <textarea
         cols="30"

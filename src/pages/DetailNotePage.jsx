@@ -1,5 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import { archiveNote, deleteNote, getNote, unarchiveNote } from '../utils/data';
+import {
+  archiveNote,
+  deleteNote,
+  getNote,
+  showFormattedDate,
+  unarchiveNote,
+} from '../utils/data';
 import ArchiveButton from '../components/Button/ArchiveButton';
 import DeleteButton from '../components/Button/DeleteButton';
 
@@ -28,7 +34,7 @@ const DetailNotePage = () => {
       <main className="m-10">
         <div className="py-7">
           <h1 className="text-4xl ">{note.title}</h1>
-          <p>{note.createdAt}</p>
+          <p>{showFormattedDate(note.createdAt)}</p>
         </div>
         <p>{note.body}</p>
       </main>

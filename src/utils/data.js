@@ -43,26 +43,26 @@ let notes = [
   },
 ];
 
-function getAllNotes() {
+const getAllNotes = () => {
   return notes;
-}
+};
 
-function getNote(id) {
+const getNote = (id) => {
   const foundedNote = notes.find((note) => note.id === id);
   return foundedNote;
-}
+};
 
-function getActiveNotes() {
+const getActiveNotes = () => {
   const activeNotes = notes.filter((note) => !note.archived);
   return activeNotes;
-}
+};
 
-function getArchivedNotes() {
+const getArchivedNotes = () => {
   const archivedNotes = notes.filter((note) => note.archived);
   return archivedNotes;
-}
+};
 
-function addNote({ title, body }) {
+const addNote = ({ title, body }) => {
   notes = [
     ...notes,
     {
@@ -73,23 +73,23 @@ function addNote({ title, body }) {
       archived: false,
     },
   ];
-}
+};
 
-function deleteNote(id) {
+const deleteNote = (id) => {
   notes = notes.filter((note) => note.id !== id);
   return notes;
-}
+};
 
-function archiveNote(id) {
+const archiveNote = (id) => {
   notes = notes.map((note) => {
     if (note.id === id) {
       return { ...note, archived: true };
     }
     return note;
   });
-}
+};
 
-function unarchiveNote(id) {
+const unarchiveNote = (id) => {
   notes = notes.map((note) => {
     if (note.id === id) {
       return { ...note, archived: false };
@@ -97,9 +97,9 @@ function unarchiveNote(id) {
 
     return note;
   });
-}
+};
 
-function editNote({ id, title, body }) {
+const editNote = ({ id, title, body }) => {
   const noteToEdit = notes.find((note) => note.id === id);
   noteToEdit.title = title;
   noteToEdit.body = body;
@@ -110,7 +110,17 @@ function editNote({ id, title, body }) {
     }
     return note;
   });
-}
+};
+
+const showFormattedDate = (date) => {
+  const options = {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  };
+  return new Date(date).toLocaleDateString('id-ID', options);
+};
 
 export {
   getAllNotes,
@@ -122,4 +132,5 @@ export {
   archiveNote,
   unarchiveNote,
   addNote,
+  showFormattedDate,
 };
