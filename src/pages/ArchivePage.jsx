@@ -1,15 +1,19 @@
+/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import Search from '../components/Search';
 import Card from '../components/card/Card';
 import { getArchivedNotes } from '../utils/data';
+import { useSearchParams } from 'react-router-dom';
 
 const ArchivePage = () => {
   const [valueSearch, setValueSearch] = useState('');
+  const [searchUrl, setSearchUrl] = useSearchParams('');
 
   const title = 'Search Archive notes';
   const getNotes = getArchivedNotes();
 
   const handleParentSearchChange = (value) => {
+    setSearchUrl({ keyword: value });
     setValueSearch(value);
   };
 
