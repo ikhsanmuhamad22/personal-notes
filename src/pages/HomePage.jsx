@@ -4,6 +4,7 @@ import Search from '../components/Search';
 import Card from '../components/card/Card';
 import { getActiveNotes } from '../utils/data';
 import { useSearchParams } from 'react-router-dom';
+import Header from '../components/Header';
 
 const HomePage = () => {
   const [valueSearch, setValueSearch] = useState('');
@@ -25,10 +26,15 @@ const HomePage = () => {
   };
 
   return (
-    <main className="p-4">
-      <Search title={title} onSearchChange={handleParentSearchChange} />
-      <Card notes={searchNotes()} archive={false} search={valueSearch} />
-    </main>
+    <>
+      <header>
+        <Header />
+      </header>
+      <main className="p-4">
+        <Search title={title} onSearchChange={handleParentSearchChange} />
+        <Card notes={searchNotes()} archive={false} search={valueSearch} />
+      </main>
+    </>
   );
 };
 

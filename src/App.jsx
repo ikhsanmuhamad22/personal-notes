@@ -1,25 +1,21 @@
 import { Route, Routes } from 'react-router-dom';
-import Header from './components/Header';
 import HomePage from './pages/HomePage';
 import ArchivePage from './pages/ArchivePage';
 import DetailNotePage from './pages/DetailNotePage';
 import AddNotePage from './pages/AddNotePage';
+import NotFoundPage from './pages/NotFoundPage';
 
 const App = () => {
   return (
-    <div>
-      <header>
-        <Header />
-      </header>
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/archives" element={<ArchivePage />} />
-          <Route path="/note/:id" element={<DetailNotePage />} />
-          <Route path="/note/new" element={<AddNotePage />} />
-        </Routes>
-      </main>
-    </div>
+    <main>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/archives" element={<ArchivePage />} />
+        <Route path="/note/:id" element={<DetailNotePage />} />
+        <Route path="/note/new" element={<AddNotePage />} />
+        <Route path="/*" element={<NotFoundPage />} />
+      </Routes>
+    </main>
   );
 };
 

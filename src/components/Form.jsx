@@ -19,7 +19,7 @@ const Form = () => {
       <input
         type="text"
         placeholder="Monthly expenses"
-        className="h-20 rounded-md text-4xl font-bold p-3"
+        className="h-20 text-4xl font-bold p-3"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         maxLength={30}
@@ -27,7 +27,7 @@ const Form = () => {
       <textarea
         cols="30"
         rows="10"
-        className="resize-none rounded-md text-lg p-3 h-full"
+        className="resize-none text-lg p-3 h-full"
         placeholder="............."
         value={body}
         onChange={(e) => setBody(e.target.value)}

@@ -12,7 +12,7 @@ const Search = ({ title, onSearchChange }) => {
     <div className="p-3">
       <h1>{title}</h1>
       <input
-        className="border border-black my-3 w-full h-8 rounded-md shadow-md p-2"
+        className="border border-black my-3 w-full h-8 shadow-md p-2"
         type="search"
         value={search}
         onChange={handleSearch}

@@ -4,6 +4,7 @@ import Search from '../components/Search';
 import Card from '../components/card/Card';
 import { getArchivedNotes } from '../utils/data';
 import { useSearchParams } from 'react-router-dom';
+import Header from '../components/Header';
 
 const ArchivePage = () => {
   const [valueSearch, setValueSearch] = useState('');
@@ -24,10 +25,15 @@ const ArchivePage = () => {
     return result;
   };
   return (
-    <main className="p-4">
-      <Search title={title} onSearchChange={handleParentSearchChange} />
-      <Card notes={searchNotes()} archive={true} search={valueSearch} />
-    </main>
+    <>
+      <header>
+        <Header />
+      </header>
+      <main className="p-4">
+        <Search title={title} onSearchChange={handleParentSearchChange} />
+        <Card notes={searchNotes()} archive={true} search={valueSearch} />
+      </main>
+    </>
   );
 };
 
