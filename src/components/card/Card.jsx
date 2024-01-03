@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 const Card = ({ notes, archive, search }) => {
   return (
-    <section className="grid grid-cols-4 gap-4 p-2">
+    <section className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 p-2">
       {archive || search ? null : (
         <Link to="/note/new" className="w-full">
           <article className="border border-black p-3 shadow-md hover:scale-105 transition-all cursor-pointer flex items-center justify-center h-full">

@@ -19,7 +19,7 @@ const Form = () => {
       <input
         type="text"
         placeholder="Monthly expenses"
-        className="h-20 text-4xl font-bold p-3"
+        className="h-20 text-xl lg:text-4xl font-bold p-3"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
         maxLength={30}

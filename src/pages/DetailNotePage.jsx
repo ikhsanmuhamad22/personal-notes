@@ -31,9 +31,9 @@ const DetailNotePage = () => {
 
   return (
     <section className="static">
-      <main className="m-10">
-        <div className="py-7">
-          <h1 className="text-4xl ">{note.title}</h1>
+      <main className="m-3 lg:m-10">
+        <div className="py-4 lg:py-7">
+          <h1 className="text-3xl lg:text-4xl ">{note.title}</h1>
           <p>{showFormattedDate(note.createdAt)}</p>
         </div>
         <p>{note.body}</p>
