@@ -18,17 +18,17 @@ const Form = () => {
     <form onSubmit={submitNote} className="flex flex-col gap-5 static">
       <input
         type="text"
-        placeholder="ahhhhh"
+        placeholder="Monthly expenses"
         className="h-20 rounded-md text-4xl font-bold p-3"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
-        maxLength={20}
+        maxLength={30}
       />
       <textarea
         cols="30"
         rows="10"
         className="resize-none rounded-md text-lg p-3 h-full"
-        placeholder="ahhhh"
+        placeholder="............."
         value={body}
         onChange={(e) => setBody(e.target.value)}
       ></textarea>
