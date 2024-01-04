@@ -7,7 +7,7 @@ const CardItem = ({ id, title, date, body }) => {
     <Link to={`/note/${id}`} className="min-h-full">
       <article className="border border-black p-3 shadow-md hover:scale-105 transition-all cursor-pointer h-full">
         <h2 className="font-bold underline pt-2">{title}</h2>
-        <p className="pb-1">{showFormattedDate(date)}</p>
+        <p className="pb-1 italic">{showFormattedDate(date)}</p>
         <p className="py-1 line-clamp-4">{body}</p>
       </article>
     </Link>

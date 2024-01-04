@@ -1,12 +1,22 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useSearchParams } from 'react-router-dom';
 
 const Search = ({ title, onSearchChange }) => {
   const [search, setSearch] = useState('');
+  const [searchUrl, setSearchUrl] = useSearchParams({ keyword: '' });
+
+  useEffect(() => {
+    const urlKeyword = searchUrl.get('keyword');
+    if (urlKeyword !== search) {
+      setSearch(urlKeyword || '');
+      onSearchChange(urlKeyword || '');
+    }
+  }, [searchUrl, onSearchChange, search]);
+
   const handleSearch = (event) => {
     const value = event.target.value;
-    setSearch(value);
-    onSearchChange(value);
+    setSearchUrl({ keyword: value });
   };
   return (
     <div className="p-3">

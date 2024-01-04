@@ -1,20 +1,16 @@
-/* eslint-disable no-unused-vars */
 import { useState } from 'react';
 import Search from '../components/Search';
 import Card from '../components/card/Card';
 import { getActiveNotes } from '../utils/data';
-import { useSearchParams } from 'react-router-dom';
 import Header from '../components/Header';
 
 const HomePage = () => {
   const [valueSearch, setValueSearch] = useState('');
-  const [searchUrl, setSearchUrl] = useSearchParams('');
 
   const title = 'Search notes';
   const getNotes = getActiveNotes();
 
   const handleParentSearchChange = (value) => {
-    setSearchUrl({ keyword: value });
     setValueSearch(value);
   };
 
