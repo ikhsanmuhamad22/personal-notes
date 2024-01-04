@@ -8,6 +8,7 @@ import {
 } from '../utils/data';
 import ArchiveButton from '../components/Button/ArchiveButton';
 import DeleteButton from '../components/Button/DeleteButton';
+import BackButtonLink from '../components/BackButtonLink';
 
 const DetailNotePage = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const DetailNotePage = () => {
 
   return (
     <section className="static">
+      <BackButtonLink />
       <main className="m-3 lg:m-10">
         <div className="py-4 lg:py-7">
           <h1 className="text-3xl lg:text-4xl ">{note.title}</h1>
