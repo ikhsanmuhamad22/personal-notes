@@ -35,6 +35,17 @@ const RegisterPage = () => {
           required
         />
       </div>
+      <div>
+        <label htmlFor="first_name" className="text-lg">
+          Confirm Password :
+        </label>
+        <input
+          type="password"
+          className="w-full p-2 border-2 border-black"
+          placeholder="ikhsan123"
+          required
+        />
+      </div>
       <button type="submit" className="p-2 text-white bg-black">
         Submit
       </button>

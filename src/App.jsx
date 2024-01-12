@@ -5,6 +5,7 @@ import DetailNotePage from './pages/DetailNotePage';
 import AddNotePage from './pages/AddNotePage';
 import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
+import LoginPage from './pages/LoginPage';
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route path="/archives" element={<ArchivePage />} />
         <Route path="/note/:id" element={<DetailNotePage />} />
         <Route path="/note/new" element={<AddNotePage />} />
