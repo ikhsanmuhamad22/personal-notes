@@ -50,8 +50,8 @@ const App = () => {
         )}
         <Route path="/archives" element={<ArchivePage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/note/:id" element={<DetailNotePage />} />
-        <Route path="/note/new" element={<AddNotePage />} />
+        <Route path="/notes/:id" element={<DetailNotePage />} />
+        <Route path="/notes/new" element={<AddNotePage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </main>

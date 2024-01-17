@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { addNote } from '../utils/data';
 import SubmitButton from './Button/SubmitButton';
 import { useNavigate } from 'react-router-dom';
+import { addNote } from '../utils/api';
 
 const Form = () => {
   const navigate = useNavigate();
   const [title, setTitle] = useState('');
   const [body, setBody] = useState('');
 
-  const submitNote = (e) => {
+  const submitNote = async (e) => {
     e.preventDefault();
-    addNote({ title, body });
+    await addNote({ title, body });
     navigate('/');
   };
 

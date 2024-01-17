@@ -1,32 +1,48 @@
 import { useNavigate, useParams } from 'react-router-dom';
-import {
-  archiveNote,
-  deleteNote,
-  getNote,
-  showFormattedDate,
-  unarchiveNote,
-} from '../utils/data';
 import ArchiveButton from '../components/Button/ArchiveButton';
 import DeleteButton from '../components/Button/DeleteButton';
 import BackButtonLink from '../components/BackButtonLink';
+import { archiveNote, deleteNote, getNote, unarchiveNote } from '../utils/api';
+import { showFormattedDate } from '../utils/data';
+import { useEffect, useState } from 'react';
 
 const DetailNotePage = () => {
+  const [note, setNote] = useState([]);
   const navigate = useNavigate();
   const { id } = useParams();
-  const note = getNote(id);
 
-  const onArchive = () => {
-    archiveNote(id);
+  useEffect(() => {
+    let isMounted = true;
+
+    const getHandleNotes = async (id) => {
+      try {
+        const { data } = await getNote(id);
+        if (isMounted) {
+          setNote(data);
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    };
+
+    getHandleNotes(id);
+    return () => {
+      isMounted = false;
+    };
+  }, [id]);
+
+  const onArchive = async () => {
+    await archiveNote(id);
     navigate('/');
   };
 
-  const onUnarchive = () => {
-    unarchiveNote(id);
+  const onUnarchive = async () => {
+    await unarchiveNote(id);
     navigate('/');
   };
 
-  const onDelete = () => {
-    deleteNote(id);
+  const onDelete = async () => {
+    await deleteNote(id);
     navigate('/');
   };
 
