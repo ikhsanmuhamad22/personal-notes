@@ -1,12 +1,12 @@
 const BASE_URL = 'https://notes-api.dicoding.dev/v1';
 
-function getAccessToken() {
+const getAccessToken = () => {
   return localStorage.getItem('accessToken');
-}
+};
 
-function putAccessToken(accessToken) {
+const putAccessToken = (accessToken) => {
   return localStorage.setItem('accessToken', accessToken);
-}
+};
 
 async function fetchWithToken(url, options = {}) {
   return fetch(url, {
@@ -18,7 +18,7 @@ async function fetchWithToken(url, options = {}) {
   });
 }
 
-async function login({ email, password }) {
+const login = async ({ email, password }) => {
   const response = await fetch(`${BASE_URL}/login`, {
     method: 'POST',
     headers: {
@@ -35,7 +35,7 @@ async function login({ email, password }) {
   }
 
   return { error: false, data: responseJson.data };
-}
+};
 
 const register = async ({ name, email, password }) => {
   const response = await fetch(`${BASE_URL}/register`, {

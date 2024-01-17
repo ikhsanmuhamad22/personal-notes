@@ -4,10 +4,12 @@ import { register } from '../utils/api';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
-  async function onRegisterHandler(user) {
+
+  const onRegisterHandler = async (user) => {
     const { error } = await register(user);
     !error ? navigate('/') : null;
-  }
+  };
+
   return <RegisterInput register={onRegisterHandler} />;
 };
 

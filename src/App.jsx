@@ -6,15 +6,45 @@ import AddNotePage from './pages/AddNotePage';
 import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { getUserLogged, putAccessToken } from './utils/api';
 
 const App = () => {
   const [authUser, setAuthUser] = useState(null);
+  const [initializing, setinitializing] = useState(true);
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      try {
+        const { data } = await getUserLogged();
+        setAuthUser(data);
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      } finally {
+        setinitializing(false);
+      }
+    };
+    fetchUserData();
+  }, []);
+
+  const onLoginSuccess = async ({ accessToken }) => {
+    putAccessToken(accessToken);
+    const { data } = await getUserLogged();
+    setAuthUser(data);
+  };
+
+  if (initializing) {
+    return <p>Loading..</p>;
+  }
+
   return (
     <main>
       <Routes>
         {authUser === null ? (
-          <Route path="/*" element={<LoginPage />} />
+          <Route
+            path="/*"
+            element={<LoginPage loginSuccess={onLoginSuccess} />}
+          />
         ) : (
           <Route path="/" element={<HomePage />} />
         )}
