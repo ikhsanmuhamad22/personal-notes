@@ -6,15 +6,20 @@ import AddNotePage from './pages/AddNotePage';
 import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
+import { useState } from 'react';
 
 const App = () => {
+  const [authUser, setAuthUser] = useState(null);
   return (
     <main>
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        {authUser === null ? (
+          <Route path="/*" element={<LoginPage />} />
+        ) : (
+          <Route path="/" element={<HomePage />} />
+        )}
         <Route path="/archives" element={<ArchivePage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/note/:id" element={<DetailNotePage />} />
         <Route path="/note/new" element={<AddNotePage />} />
         <Route path="/*" element={<NotFoundPage />} />

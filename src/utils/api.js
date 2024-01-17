@@ -37,7 +37,7 @@ async function login({ email, password }) {
   return { error: false, data: responseJson.data };
 }
 
-async function register({ name, email, password }) {
+const register = async ({ name, email, password }) => {
   const response = await fetch(`${BASE_URL}/register`, {
     method: 'POST',
     headers: {
@@ -54,7 +54,7 @@ async function register({ name, email, password }) {
   }
 
   return { error: false };
-}
+};
 
 async function getUserLogged() {
   const response = await fetchWithToken(`${BASE_URL}/users/me`);
