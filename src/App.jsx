@@ -46,9 +46,9 @@ const App = () => {
             element={<LoginPage loginSuccess={onLoginSuccess} />}
           />
         ) : (
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage user={authUser} />} />
         )}
-        <Route path="/archives" element={<ArchivePage />} />
+        <Route path="/archives" element={<ArchivePage user={authUser} />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/notes/:id" element={<DetailNotePage />} />
         <Route path="/notes/new" element={<AddNotePage />} />

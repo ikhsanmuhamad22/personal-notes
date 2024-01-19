@@ -4,7 +4,7 @@ import Card from '../components/card/Card';
 import Header from '../components/Header';
 import { getActiveNotes } from '../utils/api';
 
-const HomePage = () => {
+const HomePage = ({ user }) => {
   const [valueSearch, setValueSearch] = useState('');
   const [notes, setNotes] = useState([]);
 
@@ -45,7 +45,7 @@ const HomePage = () => {
   return (
     <>
       <header>
-        <Header />
+        <Header user={user} />
       </header>
       <main className="p-4">
         <Search title={title} onSearchChange={handleParentSearchChange} />
