@@ -10,7 +10,10 @@ const LoginInput = ({ login }) => {
   };
 
   return (
-    <form onSubmit={submitData} className="w-2/4 m-auto flex flex-col gap-4">
+    <form
+      onSubmit={submitData}
+      className="w-2/4 m-auto flex flex-col gap-4 mt-8"
+    >
       <h1 className="text-3xl text-center underline mt-3 mb-6">Login</h1>
       <div>
         <label htmlFor="first_name" className="text-lg">

@@ -1,4 +1,5 @@
 import LoginInput from '../components/Auth/LoginInlput';
+import Header from '../components/Header';
 import { login } from '../utils/api';
 
 const LoginPage = ({ loginSuccess }) => {
@@ -7,7 +8,11 @@ const LoginPage = ({ loginSuccess }) => {
     !error ? loginSuccess(data) : null;
   };
 
-  return <LoginInput login={onLoginHandler} />;
+  return (
+    <>
+      <Header /> <LoginInput login={onLoginHandler} />
+    </>
+  );
 };
 
 export default LoginPage;

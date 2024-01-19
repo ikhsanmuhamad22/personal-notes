@@ -4,7 +4,7 @@ import Card from '../components/card/Card';
 import Header from '../components/Header';
 import { getArchivedNotes } from '../utils/api';
 
-const ArchivePage = ({ user }) => {
+const ArchivePage = () => {
   const [valueSearch, setValueSearch] = useState('');
   const [notes, setNotes] = useState([]);
 
@@ -44,7 +44,7 @@ const ArchivePage = ({ user }) => {
   return (
     <>
       <header>
-        <Header user={user} />
+        <Header />
       </header>
       <main className="p-4">
         <Search title={title} onSearchChange={handleParentSearchChange} />

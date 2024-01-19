@@ -1,6 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import RegisterInput from '../components/Auth/RegisterInput';
 import { register } from '../utils/api';
+import Header from '../components/Header';
 
 const RegisterPage = () => {
   const navigate = useNavigate();
@@ -10,7 +11,11 @@ const RegisterPage = () => {
     !error ? navigate('/') : null;
   };
 
-  return <RegisterInput register={onRegisterHandler} />;
+  return (
+    <>
+      <Header /> <RegisterInput login={onRegisterHandler} />
+    </>
+  );
 };
 
 export default RegisterPage;

@@ -1,4 +1,8 @@
-const LogoutButton = ({ user }) => {
+import { useContext } from 'react';
+import { AuthUser } from '../../context/AuthUser';
+
+const LogoutButton = () => {
+  const { authUser } = useContext(AuthUser);
   return (
     <div className="flex">
       <svg
@@ -18,7 +22,7 @@ const LogoutButton = ({ user }) => {
           d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z"
         />
       </svg>
-      <h1 className="text-2xl">{user.name}</h1>
+      <h1 className="text-2xl">{authUser.name}</h1>
     </div>
   );
 };

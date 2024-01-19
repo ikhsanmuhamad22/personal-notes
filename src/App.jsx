@@ -6,11 +6,12 @@ import AddNotePage from './pages/AddNotePage';
 import NotFoundPage from './pages/NotFoundPage';
 import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getUserLogged, putAccessToken } from './utils/api';
+import { AuthUser } from './context/AuthUser';
 
 const App = () => {
-  const [authUser, setAuthUser] = useState(null);
+  const { authUser, setAuthUser } = useContext(AuthUser);
   const [initializing, setinitializing] = useState(true);
 
   useEffect(() => {
@@ -25,7 +26,7 @@ const App = () => {
       }
     };
     fetchUserData();
-  }, []);
+  }, [setAuthUser]);
 
   const onLoginSuccess = async ({ accessToken }) => {
     putAccessToken(accessToken);
@@ -46,9 +47,9 @@ const App = () => {
             element={<LoginPage loginSuccess={onLoginSuccess} />}
           />
         ) : (
-          <Route path="/" element={<HomePage user={authUser} />} />
+          <Route path="/" element={<HomePage />} />
         )}
-        <Route path="/archives" element={<ArchivePage user={authUser} />} />
+        <Route path="/archives" element={<ArchivePage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/notes/:id" element={<DetailNotePage />} />
         <Route path="/notes/new" element={<AddNotePage />} />
