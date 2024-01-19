@@ -5,10 +5,12 @@ import Header from '../components/Header';
 import { getArchivedNotes } from '../utils/api';
 import HomeButton from '../components/Button/HomeButton';
 import { Link } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 const ArchivePage = () => {
   const [valueSearch, setValueSearch] = useState('');
   const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const title = 'Search Archive notes';
 
@@ -20,9 +22,11 @@ const ArchivePage = () => {
         const { data } = await getArchivedNotes();
         if (isMounted) {
           setNotes(data);
+          setLoading(false);
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
+        setLoading(false);
       }
     };
 
@@ -48,13 +52,17 @@ const ArchivePage = () => {
       <header>
         <Header />
       </header>
-      <main className="p-4">
-        <Search title={title} onSearchChange={handleParentSearchChange} />
-        <Card notes={searchNotes()} archive={true} search={valueSearch} />
-        <Link to="/" className="absolute bottom-10 right-10">
-          <HomeButton />
-        </Link>
-      </main>
+      {loading ? (
+        <Loader />
+      ) : (
+        <main className="p-4">
+          <Search title={title} onSearchChange={handleParentSearchChange} />
+          <Card notes={searchNotes()} archive={true} search={valueSearch} />
+          <Link to="/" className="absolute bottom-10 right-10">
+            <HomeButton />
+          </Link>
+        </main>
+      )}
     </>
   );
 };

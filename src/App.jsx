@@ -9,6 +9,7 @@ import LoginPage from './pages/LoginPage';
 import { useContext, useEffect, useState } from 'react';
 import { getUserLogged, putAccessToken } from './utils/api';
 import { AuthUser } from './context/AuthUser';
+import Loader from './components/Loader';
 
 const App = () => {
   const { authUser, setAuthUser } = useContext(AuthUser);
@@ -35,7 +36,7 @@ const App = () => {
   };
 
   if (initializing) {
-    return <p>Loading..</p>;
+    return <Loader />;
   }
 
   return (

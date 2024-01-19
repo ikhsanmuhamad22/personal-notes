@@ -5,24 +5,27 @@ import Header from '../components/Header';
 import { getActiveNotes } from '../utils/api';
 import ArchiveButton from '../components/Button/ArchiveButton';
 import { Link } from 'react-router-dom';
+import Loader from '../components/Loader';
 
 const HomePage = () => {
   const [valueSearch, setValueSearch] = useState('');
   const [notes, setNotes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const title = 'Search notes';
 
   useEffect(() => {
     let isMounted = true;
-
     const getHandleNotes = async () => {
       try {
         const { data } = await getActiveNotes();
         if (isMounted) {
           setNotes(data);
+          setLoading(false);
         }
       } catch (error) {
         console.error('Error fetching user data:', error);
+        setLoading(false);
       }
     };
 
@@ -49,13 +52,17 @@ const HomePage = () => {
       <header>
         <Header />
       </header>
-      <main className="p-4">
-        <Search title={title} onSearchChange={handleParentSearchChange} />
-        <Card notes={searchNotes()} archive={false} search={valueSearch} />
-        <Link to="/archives" className="absolute bottom-10 right-10">
-          <ArchiveButton />
-        </Link>
-      </main>
+      {loading ? (
+        <Loader />
+      ) : (
+        <main className="p-4">
+          <Search title={title} onSearchChange={handleParentSearchChange} />
+          <Card notes={searchNotes()} archive={false} search={valueSearch} />
+          <Link to="/archives" className="absolute bottom-10 right-10">
+            <ArchiveButton />
+          </Link>
+        </main>
+      )}
     </>
   );
 };
