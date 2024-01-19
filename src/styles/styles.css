@@ -40,3 +40,7 @@ h3 {
 p {
   font-size: medium;
 }
+
+.card {
+  min-height: 220px;
+}

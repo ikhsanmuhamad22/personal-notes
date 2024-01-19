@@ -33,7 +33,7 @@ const RegisterInput = ({ register }) => {
         </label>
         <input
           type="text"
-          className="w-full p-2 border-2 border-black"
+          className="bg-light w-full p-2 border-2 border-bgDark"
           placeholder="ikhsan"
           value={name}
           onChange={(e) => setName(e.target.value)}
@@ -46,7 +46,7 @@ const RegisterInput = ({ register }) => {
         </label>
         <input
           type="email"
-          className="w-full p-2 border-2 border-black"
+          className="bg-light w-full p-2 border-2 border-bgDark"
           placeholder="ikhsan@gmail.com"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
@@ -59,7 +59,7 @@ const RegisterInput = ({ register }) => {
         </label>
         <input
           type="password"
-          className="w-full p-2 border-2 border-black"
+          className="bg-light w-full p-2 border-2 border-bgDark"
           placeholder="ikhsan123"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -72,7 +72,7 @@ const RegisterInput = ({ register }) => {
         </label>
         <input
           type="password"
-          className="w-full p-2 border-2 border-black"
+          className="bg-light w-full p-2 border-2 border-bgDark"
           placeholder="ikhsan123"
           value={verifPassword}
           onClick={() => setVerifPasswordInfo(false)}
@@ -81,7 +81,7 @@ const RegisterInput = ({ register }) => {
         />
         {verifPasswordInfo ? <p>password do not match</p> : null}
       </div>
-      <button type="submit" className="p-2 text-white bg-black">
+      <button type="submit" className="p-2 text-light bg-bgDark">
         Submit
       </button>
     </form>

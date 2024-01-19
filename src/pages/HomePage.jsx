@@ -3,6 +3,8 @@ import Search from '../components/Search';
 import Card from '../components/card/Card';
 import Header from '../components/Header';
 import { getActiveNotes } from '../utils/api';
+import ArchiveButton from '../components/Button/ArchiveButton';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
   const [valueSearch, setValueSearch] = useState('');
@@ -50,6 +52,9 @@ const HomePage = () => {
       <main className="p-4">
         <Search title={title} onSearchChange={handleParentSearchChange} />
         <Card notes={searchNotes()} archive={false} search={valueSearch} />
+        <Link to="/archives" className="absolute bottom-10 right-10">
+          <ArchiveButton />
+        </Link>
       </main>
     </>
   );
