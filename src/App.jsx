@@ -8,7 +8,7 @@ import RegisterPage from './pages/RegisterPage';
 import LoginPage from './pages/LoginPage';
 import { useContext, useEffect, useState } from 'react';
 import { getUserLogged, putAccessToken } from './utils/api';
-import { AuthUser } from './context/AuthUser';
+import { AuthUser } from './context/AuthUserContext';
 import Loader from './components/Loader';
 
 const App = () => {

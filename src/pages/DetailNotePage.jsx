@@ -2,8 +2,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 import ArchiveButton from '../components/Button/ArchiveButton';
 import DeleteButton from '../components/Button/DeleteButton';
 import BackButtonLink from '../components/BackButtonLink';
-import { archiveNote, deleteNote, getNote, unarchiveNote } from '../utils/api';
-import { showFormattedDate } from '../utils/data';
+import {
+  archiveNote,
+  deleteNote,
+  getNote,
+  showFormattedDate,
+  unarchiveNote,
+} from '../utils/api';
 import { useEffect, useState } from 'react';
 import Loader from '../components/Loader';
 

@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { showFormattedDate } from '../../utils/data';
+import { showFormattedDate } from '../../utils/api';
 
 const CardItem = ({ id, title, date, body }) => {
   return (

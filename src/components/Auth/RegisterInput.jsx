@@ -1,5 +1,7 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
+import translations from '../../utils/translate';
+import { Language } from '../../context/LanguageContext';
 
 const RegisterInput = ({ register }) => {
   const [name, setName] = useState('');
@@ -7,6 +9,7 @@ const RegisterInput = ({ register }) => {
   const [password, setPassword] = useState('');
   const [verifPassword, setVerifPassword] = useState('');
   const [verifPasswordInfo, setVerifPasswordInfo] = useState(false);
+  const { language } = useContext(Language);
 
   const submitData = (e) => {
     e.preventDefault();
@@ -26,9 +29,11 @@ const RegisterInput = ({ register }) => {
     <>
       <form
         onSubmit={submitData}
-        className="w-2/4 m-auto flex flex-col gap-3 mt-8"
+        className="md:w-2/4 w-full m-auto flex flex-col gap-3 mt-8"
       >
-        <h1 className="text-3xl text-center underline mt-3 mb-6">Register</h1>
+        <h1 className="text-3xl text-center underline mt-3 mb-6">
+          {translations[language].register}
+        </h1>
         <div>
           <label htmlFor="first_name" className="text-lg">
             Name :
@@ -84,13 +89,13 @@ const RegisterInput = ({ register }) => {
           {verifPasswordInfo ? <p>password do not match</p> : null}
         </div>
         <button type="submit" className="p-2 text-light bg-bgDark">
-          Submit
+          {translations[language].submit}
         </button>
       </form>
       <p className="text-center mt-3">
-        already have an account?{' '}
+        {translations[language].have_account}{' '}
         <Link to="/" className="underline">
-          Login Here
+          {translations[language].login_here}
         </Link>
       </p>
     </>

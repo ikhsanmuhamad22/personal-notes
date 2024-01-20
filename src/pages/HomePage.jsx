@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Search from '../components/Search';
 import Card from '../components/card/Card';
 import Header from '../components/Header';
@@ -6,13 +6,16 @@ import { getActiveNotes } from '../utils/api';
 import ArchiveButton from '../components/Button/ArchiveButton';
 import { Link } from 'react-router-dom';
 import Loader from '../components/Loader';
+import { Language } from '../context/LanguageContext';
+import translations from '../utils/translate';
 
 const HomePage = () => {
   const [valueSearch, setValueSearch] = useState('');
   const [notes, setNotes] = useState([]);
   const [loading, setLoading] = useState(true);
+  const { language } = useContext(Language);
 
-  const title = 'Search notes';
+  const title = translations[language].search_note;
 
   useEffect(() => {
     let isMounted = true;
@@ -58,7 +61,7 @@ const HomePage = () => {
         <main className="p-4">
           <Search title={title} onSearchChange={handleParentSearchChange} />
           <Card notes={searchNotes()} archive={false} search={valueSearch} />
-          <Link to="/archives" className="absolute bottom-10 right-10">
+          <Link to="/archives" className="fixed bottom-10 right-10">
             <ArchiveButton />
           </Link>
         </main>
