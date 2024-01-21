@@ -13,7 +13,7 @@ const RegisterPage = () => {
 
   return (
     <>
-      <Header /> <RegisterInput login={onRegisterHandler} />
+      <Header /> <RegisterInput register={onRegisterHandler} />
     </>
   );
 };

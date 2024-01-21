@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useSearchParams } from 'react-router-dom';
+import { DarkMode } from '../context/DarkModeContext';
 
 const Search = ({ title, onSearchChange }) => {
+  const { isMode } = useContext(DarkMode);
+
   const [search, setSearch] = useState('');
   const [searchUrl, setSearchUrl] = useSearchParams({ keyword: '' });
 
@@ -22,7 +25,11 @@ const Search = ({ title, onSearchChange }) => {
     <div className="p-3">
       <h1>{title}</h1>
       <input
-        className="border bg-light dark:bg-bgDark border-bgDark dark:border-light my-3 w-full h-8 shadow-md p-2 focus:outline-none"
+        className={`border ${
+          isMode === 'light'
+            ? 'border-bgDark bg-light'
+            : 'border-light bg-bgDark'
+        } my-3 w-full h-8 shadow-md p-2 focus:outline-none`}
         type="search"
         value={search}
         onChange={handleSearch}

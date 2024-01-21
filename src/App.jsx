@@ -10,12 +10,36 @@ import { useContext, useEffect, useState } from 'react';
 import { getUserLogged, putAccessToken } from './utils/api';
 import { AuthUser } from './context/AuthUserContext';
 import Loader from './components/Loader';
+import { DarkMode } from './context/DarkModeContext';
 
 const App = () => {
   const { authUser, setAuthUser } = useContext(AuthUser);
   const [initializing, setinitializing] = useState(true);
+  const { isMode, setIsMode } = useContext(DarkMode);
 
   useEffect(() => {
+    const setMode = () => {
+      const mode = localStorage.getItem('mode');
+      setIsMode(mode);
+    };
+
+    const setModeForBg = () => {
+      const body = document.body;
+
+      body.classList.remove(
+        'bg-bgDark',
+        'text-light',
+        'bg-light',
+        'text-bgDark'
+      );
+
+      if (isMode === 'light') {
+        body.classList.add('bg-light', 'text-bgDark');
+      } else {
+        body.classList.add('bg-bgDark', 'text-light');
+      }
+    };
+
     const fetchUserData = async () => {
       try {
         const { data } = await getUserLogged();
@@ -26,8 +50,10 @@ const App = () => {
         setinitializing(false);
       }
     };
+    setMode();
+    setModeForBg();
     fetchUserData();
-  }, [setAuthUser]);
+  }, [setAuthUser, setIsMode, isMode]);
 
   const onLoginSuccess = async ({ accessToken }) => {
     putAccessToken(accessToken);

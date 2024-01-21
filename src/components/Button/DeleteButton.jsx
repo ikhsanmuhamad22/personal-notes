@@ -1,6 +1,16 @@
+import { useContext } from 'react';
+import { DarkMode } from '../../context/DarkModeContext';
+
 const DeleteButton = () => {
+  const { isMode } = useContext(DarkMode);
+
   return (
-    <div className="bg-bgDark dark:bg-light text-light dark:text-bgDark p-3 rounded-full w-fit">
+    <div
+      className={`${
+        isMode === 'light' ? 'bg-bgDark text-light' : 'bg-light text-bgDark'
+      } p-3 rounded-full w-fit`}
+    >
+      {' '}
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import translations from '../../utils/translate';
 import { Language } from '../../context/LanguageContext';
 import PropTypes from 'prop-types';
+import { DarkMode } from '../../context/DarkModeContext';
 
 const RegisterInput = ({ register }) => {
   const [name, setName] = useState('');
@@ -11,6 +12,7 @@ const RegisterInput = ({ register }) => {
   const [verifPassword, setVerifPassword] = useState('');
   const [verifPasswordInfo, setVerifPasswordInfo] = useState(false);
   const { language } = useContext(Language);
+  const { isMode } = useContext(DarkMode);
 
   const submitData = (e) => {
     e.preventDefault();
@@ -41,7 +43,9 @@ const RegisterInput = ({ register }) => {
           </label>
           <input
             type="text"
-            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            className={`${
+              isMode === 'light' ? ' bg-light' : 'border-light bg-bgDark'
+            } w-full p-2 border-2 border-bgDark`}
             placeholder="jhonDoe"
             value={name}
             onChange={(e) => setName(e.target.value)}
@@ -54,7 +58,9 @@ const RegisterInput = ({ register }) => {
           </label>
           <input
             type="email"
-            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            className={`${
+              isMode === 'light' ? ' bg-light' : 'border-light bg-bgDark'
+            } w-full p-2 border-2 border-bgDark`}
             placeholder="jhonDoe@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -67,10 +73,13 @@ const RegisterInput = ({ register }) => {
           </label>
           <input
             type="password"
-            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            className={`${
+              isMode === 'light' ? ' bg-light' : 'border-light bg-bgDark'
+            } w-full p-2 border-2 border-bgDark`}
             placeholder="jhonDoe123"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            autoComplete="on"
             required
           />
         </div>
@@ -80,18 +89,25 @@ const RegisterInput = ({ register }) => {
           </label>
           <input
             type="password"
-            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            className={`${
+              isMode === 'light' ? ' bg-light' : 'border-light bg-bgDark'
+            } w-full p-2 border-2 border-bgDark`}
             placeholder="jhonDoe123"
             value={verifPassword}
             onClick={() => setVerifPasswordInfo(false)}
             onChange={(e) => setVerifPassword(e.target.value)}
+            autoComplete="on"
             required
           />
           {verifPasswordInfo ? <p>password do not match</p> : null}
         </div>
         <button
           type="submit"
-          className="p-2 text-light dark:text-bgDark bg-bgDark dark:bg-light"
+          className={`${
+            isMode === 'light'
+              ? ' text-light bg-bgDark'
+              : 'text-bgDark bg-light'
+          } p-2`}
         >
           {translations[language].submit}
         </button>

@@ -5,14 +5,17 @@ import './styles/styles.css';
 import { BrowserRouter } from 'react-router-dom';
 import AuthUserContextProvider from './context/AuthUserContext';
 import LanguageProvider from './context/LanguageContext';
+import DarkModeProvider from './context/DarkModeContext';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <LanguageProvider>
       <AuthUserContextProvider>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
+        <DarkModeProvider>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </DarkModeProvider>
       </AuthUserContextProvider>
     </LanguageProvider>
   </React.StrictMode>
