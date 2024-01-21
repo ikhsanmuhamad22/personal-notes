@@ -41,21 +41,23 @@ const App = () => {
 
   return (
     <main>
-      <Routes>
-        {authUser === null ? (
+      {authUser === null ? (
+        <Routes>
           <Route
             path="/*"
             element={<LoginPage loginSuccess={onLoginSuccess} />}
           />
-        ) : (
+          <Route path="/register" element={<RegisterPage />} />
+        </Routes>
+      ) : (
+        <Routes>
           <Route path="/" element={<HomePage />} />
-        )}
-        <Route path="/archives" element={<ArchivePage />} />
-        <Route path="/register" element={<RegisterPage />} />
-        <Route path="/notes/:id" element={<DetailNotePage />} />
-        <Route path="/notes/new" element={<AddNotePage />} />
-        <Route path="/*" element={<NotFoundPage />} />
-      </Routes>
+          <Route path="/archives" element={<ArchivePage />} />
+          <Route path="/notes/:id" element={<DetailNotePage />} />
+          <Route path="/notes/new" element={<AddNotePage />} />
+          <Route path="/*" element={<NotFoundPage />} />
+        </Routes>
+      )}
     </main>
   );
 };

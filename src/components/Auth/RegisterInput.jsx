@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import translations from '../../utils/translate';
 import { Language } from '../../context/LanguageContext';
+import PropTypes from 'prop-types';
 
 const RegisterInput = ({ register }) => {
   const [name, setName] = useState('');
@@ -40,8 +41,8 @@ const RegisterInput = ({ register }) => {
           </label>
           <input
             type="text"
-            className="bg-light w-full p-2 border-2 border-bgDark"
-            placeholder="ikhsan"
+            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            placeholder="jhonDoe"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
@@ -53,8 +54,8 @@ const RegisterInput = ({ register }) => {
           </label>
           <input
             type="email"
-            className="bg-light w-full p-2 border-2 border-bgDark"
-            placeholder="ikhsan@gmail.com"
+            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            placeholder="jhonDoe@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -66,8 +67,8 @@ const RegisterInput = ({ register }) => {
           </label>
           <input
             type="password"
-            className="bg-light w-full p-2 border-2 border-bgDark"
-            placeholder="ikhsan123"
+            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            placeholder="jhonDoe123"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -79,8 +80,8 @@ const RegisterInput = ({ register }) => {
           </label>
           <input
             type="password"
-            className="bg-light w-full p-2 border-2 border-bgDark"
-            placeholder="ikhsan123"
+            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            placeholder="jhonDoe123"
             value={verifPassword}
             onClick={() => setVerifPasswordInfo(false)}
             onChange={(e) => setVerifPassword(e.target.value)}
@@ -88,7 +89,10 @@ const RegisterInput = ({ register }) => {
           />
           {verifPasswordInfo ? <p>password do not match</p> : null}
         </div>
-        <button type="submit" className="p-2 text-light bg-bgDark">
+        <button
+          type="submit"
+          className="p-2 text-light dark:text-bgDark bg-bgDark dark:bg-light"
+        >
           {translations[language].submit}
         </button>
       </form>
@@ -100,6 +104,10 @@ const RegisterInput = ({ register }) => {
       </p>
     </>
   );
+};
+
+RegisterInput.propTypes = {
+  register: PropTypes.func.isRequired,
 };
 
 export default RegisterInput;

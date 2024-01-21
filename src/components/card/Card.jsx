@@ -7,7 +7,7 @@ const Card = ({ notes, archive, search }) => {
     <section className="grid md:grid-cols-3 lg:grid-cols-5 gap-4 p-2">
       {archive || search ? null : (
         <Link to="/notes/new" className="card w-full">
-          <article className="border border-black p-3 shadow-md hover:scale-105 transition-all cursor-pointer flex items-center justify-center h-full">
+          <article className="border border-bgDark dark:border-light p-3 shadow-md hover:scale-105 transition-all cursor-pointer h-full  flex items-center justify-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="82"

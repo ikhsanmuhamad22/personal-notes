@@ -2,6 +2,7 @@ import { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Language } from '../../context/LanguageContext';
 import translations from '../../utils/translate';
+import PropTypes from 'prop-types';
 
 const LoginInput = ({ login }) => {
   const [email, setEmail] = useState('');
@@ -28,8 +29,8 @@ const LoginInput = ({ login }) => {
           </label>
           <input
             type="email"
-            className="bg-light w-full p-2 border-2 border-bgDark"
-            placeholder="ikhsan@gmail.com"
+            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            placeholder="jhonDoe@gmail.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
@@ -41,14 +42,17 @@ const LoginInput = ({ login }) => {
           </label>
           <input
             type="password"
-            className="bg-light w-full p-2 border-2 border-bgDark"
-            placeholder="ikhsan123"
+            className="bg-light dark:bg-bgDark dark:border-light w-full p-2 border-2 border-bgDark"
+            placeholder="jhonDoe123"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
-        <button type="submit" className="p-2 text-light bg-bgDark">
+        <button
+          type="submit"
+          className="p-2 text-light dark:text-bgDark bg-bgDark dark:bg-light"
+        >
           {translations[language].submit}
         </button>
       </form>
@@ -60,6 +64,10 @@ const LoginInput = ({ login }) => {
       </p>
     </>
   );
+};
+
+LoginInput.propTypes = {
+  login: PropTypes.func.isRequired,
 };
 
 export default LoginInput;
