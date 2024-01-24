@@ -1,11 +1,20 @@
+import { useContext } from 'react';
+import { DarkMode } from '../../context/DarkModeContext';
+
 const ArchiveButton = () => {
+  const { isMode } = useContext(DarkMode);
+
   return (
-    <div className="bg-black p-3 rounded-full w-fit">
+    <div
+      className={`${
+        isMode === 'light' ? 'bg-bgDark text-light' : 'bg-light text-bgDark'
+      } p-3 rounded-full w-fit`}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="32"
         height="32"
-        fill="white"
+        fill="currentColor"
         className="bi bi-archive cursor-pointer"
         viewBox="0 0 16 16"
       >
